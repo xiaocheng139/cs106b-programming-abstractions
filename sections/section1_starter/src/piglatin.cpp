@@ -15,6 +15,7 @@
 #include "vector.h"
 #include "testing/SimpleTest.h"
 #include "testing/TextUtils.h"
+#include "strlib.h"
 using namespace std;
 
 /*
@@ -37,12 +38,25 @@ using namespace std;
  */
 
 string pigLatinReturn(string input){
-    (void) input;
-    return "";
+    Vector<char> v = {'a', 'o', 'e', 'u', 'y', 'i'};
+    int i = 0;
+    while (!v.contains(input[i])) {
+        i++;
+    }
+    string part1 = input.substr(0, i);
+    string part2 = input.substr(i);
+    return part2 + part1 + "ay";
 }
 
 void pigLatinReference(string &input){
-    (void) input;
+    Vector<char> v = {'a', 'o', 'e', 'u', 'y', 'i'};
+    int i = 0;
+    while (!v.contains(input[i])) {
+        i++;
+    }
+    string part1 = input.substr(0, i);
+    string part2 = input.substr(i);
+    input =  part2 + part1 + "ay";
 }
 
 
