@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include "set.h"
+#include "map.h"
 #include "vector.h"
 #include "testing/SimpleTest.h"
 #include "testing/TextUtils.h"
@@ -26,8 +27,18 @@ using namespace std;
  */
 
 Set<int> twice(Vector<int> nums) {
-    (void) nums;
-    return {};
+    Map<int, int> numCount;
+    Set<int> results;
+    for (int i : nums) {
+        numCount[i] += 1;
+    }
+
+    for (int key: numCount.keys()) {
+        if (numCount[key] == 2) {
+            results.add(key);
+        }
+    }
+    return results;
 }
 
 

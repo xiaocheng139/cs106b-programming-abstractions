@@ -67,5 +67,4 @@ STUDENT_TEST("Verifies multiple contacts with the same number") {
     contacts["1111111111"] = "Nick";
     EXPECT_EQUAL(findContact("0000000000", contacts), "");
     EXPECT_EQUAL(contacts.size(), 3);
-
 }

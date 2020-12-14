@@ -30,8 +30,24 @@ using namespace std;
  */
 
 Map<string, Vector<string>> friendList(string filename) {
-    (void) filename;
-    return {};
+    ifstream in;
+    Map<string, Vector<string>>friendList;
+    if (!openFile(in, filename)) {
+        return friendList;
+    } else {
+        Vector<string> lines;
+        readEntireFile(in, lines);
+        for (string &line: lines) {
+            Vector<string> friends = stringSplit(line, " ");
+            string left = friends[0];
+            string right = friends[1];
+            if(!friendList[left].contains(right)) {
+                friendList[left].add(right);
+                friendList[right].add(left);
+            }
+        }
+        return friendList;
+    }
 }
 
 
