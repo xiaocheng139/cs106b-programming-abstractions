@@ -23,8 +23,12 @@ using namespace std;
  */
 
 void doubleQueue(Queue<int>& q) {
-    (void) q;
-    // TODO: your code goes here
+    int size = q.size();
+    for (int i = 0; i < size; i++) {
+        int s = q.dequeue();
+        q.enqueue(s);
+        q.enqueue(s);
+    }
 }
 
 

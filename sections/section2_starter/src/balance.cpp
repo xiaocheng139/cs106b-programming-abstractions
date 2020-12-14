@@ -11,6 +11,7 @@
  */
 #include <iostream>
 #include "stack.h"
+#include "set.h"
 #include "testing/SimpleTest.h"
 #include "testing/TextUtils.h"
 using namespace std;
@@ -25,9 +26,31 @@ using namespace std;
  * balanced. If any ( or { are never closed, return the string’s length.
  */
 
-int checkBalance(string code) {
-    (void) code;
-    return 0;
+int checkBalance(string code) {  
+    Stack<char> stack;
+    for (int i = 0; i < code.length(); i++) {
+        char c = code[i];
+        if (c == '(' || c == '{') {
+            stack.push(c);
+        } else if (c == ')') {
+            if (!stack.isEmpty() && stack.peek() == '(') {
+                stack.pop();
+            } else {
+                return i;
+            }
+        } else if (c == '}') {
+            if (!stack.isEmpty() && stack.peek() == '{') {
+                stack.pop();
+            } else {
+                return i;
+            }
+        }
+    }
+    if(stack.isEmpty()) {
+        return -1;
+    } else {
+        return code.length();
+    }
 }
 
 

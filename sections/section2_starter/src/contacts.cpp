@@ -59,3 +59,13 @@ PROVIDED_TEST("Verifies that findContact works with many spurious lookups") {
     EXPECT_EQUAL(findContact("1234567890", contacts), "Trip");
     EXPECT_EQUAL(findContact("Trip", contacts), "");
 }
+
+STUDENT_TEST("Verifies multiple contacts with the same number") {
+    Map<string, string> contacts;
+    contacts["1234567890"] = "Trip";
+    contacts["0987654321"] = "Kylie";
+    contacts["1111111111"] = "Nick";
+    EXPECT_EQUAL(findContact("0000000000", contacts), "");
+    EXPECT_EQUAL(contacts.size(), 3);
+
+}
