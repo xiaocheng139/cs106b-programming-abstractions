@@ -31,7 +31,7 @@ bool canMakeSum(Vector<int>& values, int target) {
     return canMakeSumHelper(values, target, 0);
 }
 
-bool canMakeSumHelper(const Vector<int>& values, Vector<int>& path, int target, int index) {
+bool canMakeSumHelper(const Vector<int>& values, int target, int index) {
     if (index >= values.size()) {
         if (target == 0) {
             return true;

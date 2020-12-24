@@ -27,23 +27,27 @@ using namespace std;
  * minimum number of coins required to make change for that total.
  */
 
-int fewestCoinsForHelper(int cents, Set<int>& coins, int sum, int count);
+int fewestCoinsForHelper(int cents, Set<int>& coins);
 
 int fewestCoinsFor(int cents, Set<int>& coins) {
-    return fewestCoinsForHelper(cents, coins, 0, 0);
+    return fewestCoinsForHelper(cents, coins);
 }
 
-int fewestCoinsForHelper(int cents, Set<int>& coins, int sum, int count) {
-//    if (sum > cents) {
-//        return 0;
-//    } else if (sum == cents) {
-//        return count;
-//    } else {
-//        for (int coin: coins) {
-//            1 + fewestCoinsForHelper(cents, coins, sum + coin, count + 1);
-//        }
-//    }
-    return 0;
+int fewestCoinsForHelper(int cents, Set<int>& coins) {
+    if (cents == 0){
+        return 0;
+    } else {
+        int fewestCoins = cents + 1;
+        for (int coin: coins) {
+            if (coin <= cents) {
+                int newCount = fewestCoinsForHelper(cents - coin, coins);
+                if (newCount < fewestCoins) {
+                    fewestCoins = newCount;
+                }
+            }
+        }
+        return fewestCoins + 1;
+    }
 }
 
 /* * * * * Provided Tests Below This Point * * * * */
