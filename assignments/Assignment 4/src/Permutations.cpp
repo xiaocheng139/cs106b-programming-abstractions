@@ -40,7 +40,7 @@ HashSet<string> permutationsRec(string str, string chosen) {
             /* Find all permutations we can make with this choice and add them into
              * the result.
              */
-            HashSet<string> thisOption = permutationsRec(remaining, chosen += ch);
+            HashSet<string> thisOption = permutationsRec(remaining, chosen + ch);
             result += thisOption;
         }
 

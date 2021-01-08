@@ -24,4 +24,4 @@ Q6: chosen += ch
 
 
 
-Q7:
+Q7: chosen += ch also changes the value of chosen
