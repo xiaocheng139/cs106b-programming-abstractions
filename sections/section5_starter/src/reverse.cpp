@@ -26,6 +26,7 @@ using namespace std;
  * Write a function reverse that reverses the order of the
  * elements in a list of integers.
  */
+Node* reverseRecursiveHelper(Node*& front, Node* cur);
 
 void reverse(Node*& front) {
     Node* cur = front;
@@ -39,6 +40,21 @@ void reverse(Node*& front) {
         cur = next;
     }
     front = prev;
+//    Node* cur = front;
+//    reverseRecursiveHelper(front, cur);
+}
+
+Node* reverseRecursiveHelper(Node*& front, Node* cur) {
+    if (cur == nullptr || cur->next == nullptr) {
+        front = cur;
+        return front;
+    } else {
+        Node* rest = reverseRecursiveHelper(front, cur->next);
+        cur->next->next = cur;
+        cur->next = nullptr;
+        front = rest;
+        return front;
+    }
 }
 
 
