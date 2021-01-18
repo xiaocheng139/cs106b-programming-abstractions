@@ -7,6 +7,12 @@
 #include "patientqueue.h"
 using namespace std;
 
+struct Patient {
+    string patienName;
+    int timeStamp;
+    int priority;
+};
+
 class VectorPatientQueue : public PatientQueue {
 public:
     VectorPatientQueue();
@@ -21,7 +27,10 @@ public:
     string toString();
 
 private:
-    // TODO: add specified member variable(s)
-    // TODO: add any member functions necessary
+    Patient* patients;
+    int capacity;
+    int numPatients;
+    int timeCount;
 
+    void resize();
 };
