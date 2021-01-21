@@ -184,9 +184,10 @@ HuffmanNode* decodeTree(Queue<Bit>& bits, Queue<char>& leaves) {
         char c = leaves.dequeue();
         return new HuffmanNode {c, nullptr, nullptr};
     } else {
-        HuffmanNode* zero = decodeTree(bits, leaves);
-        HuffmanNode* one = decodeTree(bits, leaves);
-        return new HuffmanNode {'*', zero, one};
+        HuffmanNode* newNode = new HuffmanNode;
+        newNode->zero = decodeTree(bits, leaves);
+        newNode->one = decodeTree(bits, leaves);
+        return newNode;
     }
 }
 
